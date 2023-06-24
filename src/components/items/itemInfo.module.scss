@@ -1,0 +1,54 @@
+.main {
+    width: 15.625rem;
+    height: 18.75rem;
+
+    border-radius: 3px;
+    border: 1px solid #E7E7E7;
+
+    .img {
+        width: 14.25rem;
+        height: 8.125rem;
+
+        margin: 1.8rem auto;
+    }
+
+    .description {
+        width: 10.3125rem;
+        color: #000;
+    
+        margin-left: 0.95rem;
+        margin-bottom: 0.8rem;
+    
+        font-size: 0.875rem;
+        font-family: Roboto;
+        font-weight: 700;
+    }
+
+    .cost {
+        margin-left: 0.95rem;
+    
+        .cart_button {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 3px;
+            background-color: #36F;
+            cursor: pointer;
+        
+            display: inline-block;
+            vertical-align: middle;
+        
+            margin-right: 1rem;
+        
+            img {       
+                margin: 0.5rem 0.4rem;
+                filter: invert(100%);
+                
+            }
+        }
+    }
+}
+
+
+
+
+

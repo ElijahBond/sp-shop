@@ -1,0 +1,16 @@
+.header {
+    margin: 1.5rem 2rem;
+    height: 2rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: baseline;
+}
+
+.divider {
+    background: #CFCFCF;
+    height: 0.0625rem;
+    width: 100%;
+}
