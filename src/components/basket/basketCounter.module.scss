@@ -1,0 +1,14 @@
+.main {
+    width: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 2.95rem;
+    left: 7.05rem;
+
+    .incrAndDecr {
+        cursor: pointer;
+    }
+}

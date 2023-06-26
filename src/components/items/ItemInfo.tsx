@@ -1,6 +1,5 @@
 import itemInfoStyles from './itemInfo.module.scss';
-import itemImg from '../../assets/itemsImg/nb574.svg';
-import shoppingCart from '../../assets/shoppingCart.svg';
+import { nb574, shoppingCart } from '../../assets';
 
 const ItemInfo = () => {
 
@@ -8,7 +7,7 @@ const ItemInfo = () => {
         <div className={itemInfoStyles.main}>
 
             <div className={itemInfoStyles.img}>
-                <img  src={itemImg} />
+                <img  src={nb574} />
             </div>
 
             <p className={itemInfoStyles.description}>New Balance 574 Vintage Brights</p>

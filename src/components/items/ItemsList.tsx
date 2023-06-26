@@ -1,9 +1,15 @@
 import { ItemInfo } from "./ItemInfo";
+import itemListStyles from './itemList.module.scss';
 
 const ItemList = () => {
 
     return (
-        <div style={{padding: '3rem 2rem'}}>
+        <div className={itemListStyles.main}>
+            <ItemInfo />
+            <ItemInfo />
+            <ItemInfo />
+            <ItemInfo />
+            <ItemInfo />
             <ItemInfo />
         </div>
     )

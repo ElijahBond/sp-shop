@@ -1,0 +1,32 @@
+.main {
+    width: 20.625rem;
+    height: 6.25rem;
+
+    margin: 0 auto 2.5rem auto;
+    position: relative;
+
+    .clearImg {
+        position: absolute;
+        top: 0;
+        left: 19.25rem;
+        
+        cursor: pointer;
+    }
+
+    .itemImg {
+        width: 5.625rem;
+        height: 3.1875rem;
+
+        margin-left: 0.3rem;
+        margin-top: 1.56rem;
+    }
+
+    .description {
+        width: 12.67594rem;
+        font-size: 0.875rem;
+
+        position: absolute;
+        top: -1rem;
+        left: 7rem;
+    }
+}

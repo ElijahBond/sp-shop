@@ -1,4 +1,4 @@
-import shopImage from '../../assets/SP.svg';
+import { shopImage } from "../../assets";
 
 const ShopName = () => {
     return (

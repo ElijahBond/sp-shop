@@ -1,0 +1,19 @@
+.main {
+    position:absolute;
+    right: 0; 
+    top: 5rem; 
+    bottom: 0;
+    width: 25.6rem;
+    border-left: 1px solid #CFCFCF;
+
+    .title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin: 2.5rem auto auto 2.5rem;
+        padding-bottom: 1.87rem;
+    }
+
+    .basket_list {
+        border-bottom: 1px solid #CFCFCF;
+    }
+}

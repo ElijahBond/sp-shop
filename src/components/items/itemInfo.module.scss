@@ -23,28 +23,28 @@
         font-family: Roboto;
         font-weight: 700;
     }
+}
 
-    .cost {
-        margin-left: 0.95rem;
-    
-        .cart_button {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 3px;
-            background-color: #36F;
-            cursor: pointer;
+.cost {
+    margin-left: 0.95rem;
+}
+
+.cart_button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 3px;
+    background-color: var(--blue-background);
+    cursor: pointer;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    margin-right: 1rem;
+
+    img {       
+        margin: 0.5rem 0.4rem;
+        filter: invert(100%);
         
-            display: inline-block;
-            vertical-align: middle;
-        
-            margin-right: 1rem;
-        
-            img {       
-                margin: 0.5rem 0.4rem;
-                filter: invert(100%);
-                
-            }
-        }
     }
 }
 

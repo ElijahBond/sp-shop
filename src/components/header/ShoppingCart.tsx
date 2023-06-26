@@ -1,4 +1,4 @@
-import shoppingCart from '../../assets/shoppingCart.svg';
+import { shoppingCart } from '../../assets';
 import shoppingCartStyles from './shoppingCart.module.scss';
 
 const ShoppingCart = () => {
