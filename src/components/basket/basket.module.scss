@@ -5,6 +5,7 @@
     bottom: 0;
     width: 25.6rem;
     border-left: 1px solid #CFCFCF;
+    margin: 0 auto;
 
     .title {
         font-size: 1.125rem;
@@ -15,5 +16,11 @@
 
     .basket_list {
         border-bottom: 1px solid #CFCFCF;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        display: none;
     }
 }

@@ -1,8 +1,6 @@
 .itemImg {
     border: 1px solid #D5D5D5;
-
-    width: 55.625rem;
-    height: 31.73194rem;
+    width: 60.25%;
 }
 
 .description {
@@ -18,4 +16,11 @@
 .model_number {
     margin-bottom: 1.25rem;
     font-size: 0.875rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .main {
+        
+    }
 }

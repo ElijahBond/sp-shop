@@ -5,7 +5,7 @@ import itemInfoStyles from '../items/itemInfo.module.scss';
 const ItemDescription = () => {
 
     return (
-        <div>
+        <div className={itemDescriptionStyles.main}>
             <img 
                 className={itemDescriptionStyles.itemImg}
                 src={nb574} />
