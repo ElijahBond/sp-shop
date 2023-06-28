@@ -1,6 +1,8 @@
 import basketResultStyles from './basketResult.module.scss';
+import { dataItems } from '../dataItems';
 
 const BasketResult = () => {
+    const { tax, shippingCost} = dataItems.serviceInfo;
 
     return (
         <div className={basketResultStyles.main}>
@@ -11,12 +13,12 @@ const BasketResult = () => {
 
             <div className={basketResultStyles.string}>
                 <span>Tax</span>
-                <span>$ 100</span>
+                <span>$ {tax}</span>
             </div>
 
             <div className={basketResultStyles.string}>
                 <span>Shipping</span>
-                <span>$ 150</span>
+                <span>$ {shippingCost}</span>
             </div>
 
             <div className={`${basketResultStyles.string} ${basketResultStyles.bold}`}>

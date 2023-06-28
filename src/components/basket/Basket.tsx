@@ -1,5 +1,5 @@
 import { BasketItem } from './BasketItem';
-import { BasketResult } from './BasletResult';
+import { BasketResult } from './BasketResult';
 import basketStyles from './basket.module.scss';
 
 const Basket = () => {

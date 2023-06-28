@@ -1,22 +1,24 @@
 import itemInfoStyles from './itemInfo.module.scss';
-import { nb574, shoppingCart } from '../../assets';
+import { shoppingCart } from '../../assets';
+import { IModels } from '../dataItems';
 
-const ItemInfo = () => {
-
+const ItemInfo = ({ modelNumber, description, imgSrc, cost }: IModels) => {
     return (
         <div className={itemInfoStyles.main}>
 
             <div className={itemInfoStyles.img}>
-                <img  src={nb574} />
+                <img 
+                    src={imgSrc}
+                    alt={modelNumber} />
             </div>
 
-            <p className={itemInfoStyles.description}>New Balance 574 Vintage Brights</p>
+            <p className={itemInfoStyles.description}>{description}</p>
 
             <div className={itemInfoStyles.cost}>
                 <div className={itemInfoStyles.cart_button}>
                     <img src={shoppingCart} />
                 </div>
-                <span>$ 650</span>
+                <span>$ {cost}</span>
             </div>
         </div>
     )
