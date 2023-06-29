@@ -1,18 +1,18 @@
 import itemPageStyles from './ItemPage.module.scss';
-
-import itemInfoStyles from '../items/itemInfo.module.scss';
-import { shoppingCart } from '../../assets';
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { IModels, dataItems } from '../dataItems';
+import { useState } from 'react';
+import { dataItems } from '../dataItems';
+import { ItemView } from './ItemView';
 
 const ItemPage = () => {
     const { model } = useParams();
 
     const [ currentModel ] = useState(() => {
-        const modelData = dataItems.models.filter(el => el.modelNumber === model)
-        return modelData[0]
+        const modelData = dataItems.models.filter(el => el.modelNumber === model)[0]
+        return modelData
     });
+
+    const view = currentModel ? <ItemView {...currentModel} /> : <h1>Bad link</h1>
     
     return (
         <div className={itemPageStyles.wrapper}>
@@ -26,19 +26,7 @@ const ItemPage = () => {
                     </button>
                 </Link>
 
-                <img 
-                    className={itemPageStyles.itemImg}
-                    src={currentModel.imgSrc} />
-
-                <p className={itemPageStyles.description}>{currentModel.description}</p>
-                <div className={itemPageStyles.model_number}>Item model number: {currentModel.modelNumber}</div>
-
-                <div>
-                    <div className={itemInfoStyles.cart_button}>
-                        <img src={shoppingCart} />
-                    </div>
-                    <span>$ {currentModel.cost}</span>
-                </div>
+                {view}
             </div>
         </div>
     )
