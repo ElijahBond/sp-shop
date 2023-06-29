@@ -2,7 +2,7 @@ import basketResultStyles from './basketResult.module.scss';
 import { dataItems } from '../dataItems';
 
 const BasketResult = () => {
-    const { tax, shippingCost} = dataItems.serviceInfo;
+    const { tax, shippingCost } = dataItems.serviceInfo;
 
     return (
         <div className={basketResultStyles.main}>
