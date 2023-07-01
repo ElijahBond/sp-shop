@@ -33,7 +33,6 @@ export const basketSlice = createSlice({
                     totalCost: action.payload.cost
                 }
                 state.itemsInBasket.push(addingItem)
-                console.log(current(state))
             } else {
                 // if item have in basket - find it index and increase by 1
                 const currentItem = state.itemsInBasket[indexCurrentModelInBasket]
@@ -42,13 +41,32 @@ export const basketSlice = createSlice({
                 currentItem.totalCost = currentItem.cost * currentItem.totalCount;
             }
         },
-        decrement: ( state ) => {
-            state.itemsInBasket[0].totalCount -= 1
+        addOne: (state, action: PayloadAction<string>) => {
+            // increase by 1 item in basket 
+            const indexCurrentModelInBasket = state.itemsInBasket.findIndex(el => el.modelNumber === action.payload);
+            const currentItem = state.itemsInBasket[indexCurrentModelInBasket];
+            currentItem.totalCount += 1;
+            currentItem.totalCost = currentItem.cost * currentItem.totalCount;
+        },
+        deleteOne: (state, action: PayloadAction<string>) => {
+            const indexCurrentModelInBasket = state.itemsInBasket.findIndex(el => el.modelNumber === action.payload);
+            const currentItem = state.itemsInBasket[indexCurrentModelInBasket];
+
+            if (currentItem.totalCount > 1) {
+                // if amount of item over 1 decrease by 1
+                currentItem.totalCount -= 1;
+                currentItem.totalCost = currentItem.cost * currentItem.totalCount;
+            } else {
+                // if amount of item less 1 delete item from basket
+                currentItem.totalCount -= 1;
+                const filteredBasket = state.itemsInBasket.filter(el => el.totalCount != 0);
+                state.itemsInBasket = filteredBasket
+            }
         },
     }
 })
 
-export const { increment, decrement } = basketSlice.actions
+export const { increment, addOne, deleteOne } = basketSlice.actions
 
 export default basketSlice.reducer
 

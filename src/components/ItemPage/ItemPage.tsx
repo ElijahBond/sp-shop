@@ -18,7 +18,11 @@ const ItemPage = () => {
         <div className={itemPageStyles.wrapper}>
             <div className={itemPageStyles.main}>
 
-                <Link to={'/'} style={{textDecoration: 'none'}}>
+                <Link 
+                    to={'/'} 
+                    style={{textDecoration: 'none'}} 
+                    className={itemPageStyles.link}
+                >
                     <button 
                         className={itemPageStyles.button}
                         >

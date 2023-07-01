@@ -5,8 +5,10 @@ import basketStyles from './basket.module.scss';
 
 const Basket = () => {
     const allItemsInBasket = useAppSelector((state) => state.itemsInBasket)
-    
+    // console.log(allItemsInBasket)
+
     const allItemsInBasketView = allItemsInBasket.map(el => <BasketItem key={el.modelNumber} {...el} /> )
+
     const view = allItemsInBasketView.length === 0 ? <BasketIsEmpty /> : allItemsInBasketView
 
     return (
