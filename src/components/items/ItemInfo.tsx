@@ -2,8 +2,12 @@ import itemInfoStyles from './itemInfo.module.scss';
 import { shoppingCart } from '../../assets';
 import { IModels } from '../dataItems';
 import { Link } from 'react-router-dom';
+import { increment, useAppDispatch } from '../../store';
 
-const ItemInfo = ({ modelNumber, description, imgSrc, cost }: IModels) => {
+const ItemInfo = (props: IModels) => {
+    const { modelNumber, description, imgSrc, cost } = props;
+    const dispatch = useAppDispatch();
+    
     return (
         <div className={itemInfoStyles.main}>
             <Link to={`/${modelNumber}`}>
@@ -17,7 +21,10 @@ const ItemInfo = ({ modelNumber, description, imgSrc, cost }: IModels) => {
             <p className={itemInfoStyles.description}>{description}</p>
 
             <div className={itemInfoStyles.cost}>
-                <div className={itemInfoStyles.cart_button}>
+                <div 
+                    onClick={() => dispatch(increment(props))}
+                    className={itemInfoStyles.cart_button}
+                >
                     <img src={shoppingCart} />
                 </div>
                 <span>$ {cost}</span>

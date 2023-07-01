@@ -1,7 +1,12 @@
 import { decrementImg, incrementImg } from '../../assets';
 import basketCounterStyles from './basketCounter.module.scss';
 
-const BasketCounter = () => {
+interface IBasketCounter {
+    totalCount: number,
+    totalCost: number
+}
+
+const BasketCounter = ({totalCount, totalCost}: IBasketCounter) => {
 
     return (
         <div className={basketCounterStyles.main}>
@@ -9,12 +14,12 @@ const BasketCounter = () => {
                 className={basketCounterStyles.incrAndDecr}
                 src={decrementImg} 
             />
-            <span>0</span>
+            <span>{totalCount}</span>
             <img 
                 className={basketCounterStyles.incrAndDecr}
                 src={incrementImg} 
             />
-            <span>$ 650</span>
+            <span>$ {totalCost}</span>
         </div>
     )
 }

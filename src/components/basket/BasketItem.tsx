@@ -1,8 +1,9 @@
-import { clearImg, nb574 } from '../../assets';
+import { clearImg } from '../../assets';
+import { IItem } from '../../store';
 import { BasketCounter } from './BasketCounter';
 import basketItemStyles from './basketItem.module.scss';
 
-const BasketItem = () => {
+const BasketItem = ({ description, imgSrc, totalCount, totalCost }: IItem) => {
 
     return (
         <div className={basketItemStyles.main}>
@@ -12,10 +13,13 @@ const BasketItem = () => {
             />
             <img 
                 className={basketItemStyles.itemImg}
-                src={nb574} 
+                src={imgSrc} 
             />
-            <p className={basketItemStyles.description}>New Balance 574 Vintage Brights</p>
-            <BasketCounter />
+            <p className={basketItemStyles.description}>{description}</p>
+            <BasketCounter
+                totalCount={totalCount}
+                totalCost={totalCost}
+            />
         </div>
     )
 }
