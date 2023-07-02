@@ -1,14 +1,18 @@
 .main {
     width: 10rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 2fr;
+
 
     position: absolute;
     top: 2.95rem;
     left: 7.05rem;
-
+    
     .incrAndDecr {
         cursor: pointer;
+    }
+
+    .margin {
+        margin: 0 auto;
     }
 }

@@ -18,7 +18,7 @@ const BasketCounter = ({modelNumber, totalCount, totalCost}: IBasketCounter) => 
                 className={basketCounterStyles.incrAndDecr}
                 src={decrementImg} 
             />
-            <span>{totalCount}</span>
+            <span className={basketCounterStyles.margin}>{totalCount}</span>
             <img
                 onClick={() => dispatch(addOne(modelNumber as string))}
                 className={basketCounterStyles.incrAndDecr}
