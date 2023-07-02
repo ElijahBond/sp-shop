@@ -1,14 +1,15 @@
 import { clearImg } from '../../assets';
-import { IItem } from '../../store';
+import { IItem, deleteFullyCurrentItem, useAppDispatch } from '../../store';
 import { BasketCounter } from './BasketCounter';
 import basketItemStyles from './basketItem.module.scss';
 
 const BasketItem = ({ modelNumber ,description, imgSrc, totalCount, totalCost }: IItem) => {
+    const dispatch = useAppDispatch();
 
     return (
         <div className={basketItemStyles.main}>
             <img
-                onClick={() => console.log('delete this item')}
+                onClick={() => dispatch(deleteFullyCurrentItem(modelNumber))}
                 className={basketItemStyles.clearImg} 
                 src={clearImg} 
             />

@@ -12,11 +12,13 @@ export interface IItem extends IModels {
 }
 
 interface IInitStore {
-    itemsInBasket: IItem[] | []
+    itemsInBasket: IItem[] | [],
+    amountItemsInBasket: number
 }
 
 const initialState: IInitStore =  {
-    itemsInBasket: []
+    itemsInBasket: [],
+    amountItemsInBasket: 0
 }
 
 export const basketSlice = createSlice({
@@ -40,17 +42,22 @@ export const basketSlice = createSlice({
                 currentItem.totalCount += 1;
                 currentItem.totalCost = currentItem.cost * currentItem.totalCount;
             }
+
+            // count the total number of items in basket
+            state.amountItemsInBasket = counterItems(state.itemsInBasket)
         },
         addOne: (state, action: PayloadAction<string>) => {
             // increase by 1 item in basket 
-            const indexCurrentModelInBasket = state.itemsInBasket.findIndex(el => el.modelNumber === action.payload);
-            const currentItem = state.itemsInBasket[indexCurrentModelInBasket];
+            const currentItem = findCurrentItem(state.itemsInBasket, action.payload);
+
             currentItem.totalCount += 1;
             currentItem.totalCost = currentItem.cost * currentItem.totalCount;
+
+            // count the total number of items in basket
+            state.amountItemsInBasket = counterItems(state.itemsInBasket)
         },
         deleteOne: (state, action: PayloadAction<string>) => {
-            const indexCurrentModelInBasket = state.itemsInBasket.findIndex(el => el.modelNumber === action.payload);
-            const currentItem = state.itemsInBasket[indexCurrentModelInBasket];
+            const currentItem = findCurrentItem(state.itemsInBasket, action.payload)
 
             if (currentItem.totalCount > 1) {
                 // if amount of item over 1 decrease by 1
@@ -62,14 +69,43 @@ export const basketSlice = createSlice({
                 const filteredBasket = state.itemsInBasket.filter(el => el.totalCount != 0);
                 state.itemsInBasket = filteredBasket
             }
+
+            // count the total number of items in basket
+            state.amountItemsInBasket = counterItems(state.itemsInBasket)
         },
+        deleteFullyCurrentItem: (state, action: PayloadAction<string>) => {
+            const filteredBasket = state.itemsInBasket.filter(el => el.modelNumber != action.payload);
+            state.itemsInBasket = filteredBasket
+
+            // count the total number of items in basket
+            state.amountItemsInBasket = counterItems(state.itemsInBasket)
+        }
     }
 })
 
-export const { increment, addOne, deleteOne } = basketSlice.actions
-
+export const { increment, addOne, deleteOne, deleteFullyCurrentItem } = basketSlice.actions
 export default basketSlice.reducer
+
+
 
 // export hooks 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+
+
+
+// help functions
+function counterItems (array: IItem[] | []): number {
+    if ( array.length > 0) {
+        return array.reduce(
+            (accumulator: number, element: IItem) => accumulator + element.totalCount
+            , 0)
+        } else return 0;
+    }
+    
+    function findCurrentItem (itemsInBasket: IItem[] | [], actionPayload: string) {
+        const indexCurrentModelInBasket = itemsInBasket.findIndex(el => el.modelNumber === actionPayload);
+        return itemsInBasket[indexCurrentModelInBasket];
+    }
+    
+// console.log(current(state))
