@@ -5,12 +5,15 @@ import basketStyles from './basket.module.scss';
 
 const Basket = () => {
     const allItemsInBasket = useAppSelector((state) => state.itemsInBasket)
+    const isOpen = useAppSelector((state) => state.isOpen)
     
     const allItemsInBasketView = allItemsInBasket.map(el => <BasketItem key={el.modelNumber} {...el} /> )
     const view = allItemsInBasketView.length === 0 ? <BasketIsEmpty /> : allItemsInBasketView
 
     return (
-        <div className={basketStyles.main}>
+        <div
+            style={{ display: isOpen ? 'block' : 'none'}}
+            className={basketStyles.main}>
             <p className={basketStyles.title}>My Basket</p>
 
             <div className={basketStyles.basket_list}>

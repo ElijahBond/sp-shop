@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
+import { IModels } from '../dataItems';
+import { increment, useAppDispatch } from '../../store';
+
 import itemInfoStyles from './itemInfo.module.scss';
 import { shoppingCart } from '../../assets';
-import { IModels } from '../dataItems';
-import { Link } from 'react-router-dom';
-import { increment, useAppDispatch } from '../../store';
 
 const ItemInfo = (props: IModels) => {
     const { modelNumber, description, imgSrc, cost } = props;

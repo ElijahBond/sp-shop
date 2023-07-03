@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import { ItemPage } from './components/ItemPage/ItemPage';
 import { ItemList } from './components/items/ItemsList';
+import { Layout } from './components/Layout';
 
 import './App.scss';
-import { Layout } from './components/Layout';
 
 function App() {
 

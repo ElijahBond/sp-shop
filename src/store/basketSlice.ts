@@ -13,12 +13,14 @@ export interface IItem extends IModels {
 
 interface IInitStore {
     itemsInBasket: IItem[] | [],
-    amountItemsInBasket: number
+    amountItemsInBasket: number,
+    isOpen: boolean
 }
 
 const initialState: IInitStore =  {
     itemsInBasket: [],
-    amountItemsInBasket: 0
+    amountItemsInBasket: 0,
+    isOpen: true
 }
 
 export const basketSlice = createSlice({
@@ -79,11 +81,19 @@ export const basketSlice = createSlice({
 
             // count the total number of items in basket
             state.amountItemsInBasket = counterItems(state.itemsInBasket)
+        },
+        toggleBasketView: (state, action: PayloadAction<boolean>) => {
+            state.isOpen = !action.payload
         }
     }
 })
 
-export const { increment, addOne, deleteOne, deleteFullyCurrentItem } = basketSlice.actions
+export const { increment, 
+                addOne, 
+                deleteOne, 
+                deleteFullyCurrentItem,
+                toggleBasketView
+            } = basketSlice.actions
 export default basketSlice.reducer
 
 
