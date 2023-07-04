@@ -1,7 +1,7 @@
 import itemInfoStyles from '../items/itemInfo.module.scss';
 import itemPageStyles from './ItemPage.module.scss';
 import { shoppingCart } from '../../assets';
-import { IModels } from '../dataItems';
+import { IModels } from '../types';
 import { increment, useAppDispatch } from '../../store';
 
 const ItemView = (props: IModels) => {

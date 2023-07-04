@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 import type { AppDispatch, RootState } from "./store"
 
-import { IModels } from "../components/dataItems"
+import { IModels } from "../components/types";
 
 export interface IItem extends IModels {
     totalCount: number

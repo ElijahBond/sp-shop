@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { IModels } from '../dataItems';
+import { IModels } from '../types';
 import { increment, useAppDispatch } from '../../store';
 
 import itemInfoStyles from './itemInfo.module.scss';

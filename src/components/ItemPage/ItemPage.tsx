@@ -1,16 +1,25 @@
-import itemPageStyles from './ItemPage.module.scss';
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { dataItems } from '../dataItems';
+import { useEffect, useState } from 'react';
+
 import { ItemView } from './ItemView';
+import { useGetAllItemsQuery } from '../../store/itemsApi';
+
+import { IModels } from '../types';
+
+import itemPageStyles from './ItemPage.module.scss';
 
 const ItemPage = () => {
     const { model } = useParams();
+    const [ currentModel, setCurrentModel ] = useState({});
 
-    const [ currentModel ] = useState(() => {
-        const modelData = dataItems.models.filter(el => el.modelNumber === model)[0]
-        return modelData
-    });
+    const { isLoading, data } = useGetAllItemsQuery('')
+
+    useEffect(() => {
+        if (data) {
+            const modelData = data.record.models.filter((el: IModels) => el.modelNumber === model)[0]
+            setCurrentModel(modelData);
+        }
+    }, [data, model])
 
     const view = currentModel ? <ItemView {...currentModel} /> : <h1>Bad link</h1>
     
@@ -30,7 +39,7 @@ const ItemPage = () => {
                     </button>
                 </Link>
 
-                {view}
+                {isLoading ? <h1>Be patient please</h1> : view}
             </div>
         </div>
     )
