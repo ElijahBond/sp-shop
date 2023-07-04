@@ -5,8 +5,8 @@ import { burgerButton, shoppingCart } from '../../assets';
 import shoppingCartStyles from './shoppingCart.module.scss';
 
 const ShoppingCart = () => {
-    const amountItemsInBasket = useAppSelector((state) => state.amountItemsInBasket)
-    const isOpen = useAppSelector((state) => state.isOpen)
+    const amountItemsInBasket = useAppSelector((state) => state.basketSlice.amountItemsInBasket)
+    const isOpen = useAppSelector((state) => state.basketSlice.isOpen)
     const dispatch = useAppDispatch()
 
     return (
