@@ -23,11 +23,9 @@ const initialState: IInitStore =  {
     isOpen: true
 }
 
-const pState: IInitStore = JSON.parse(sessionStorage.getItem('spBasket'))
-
 export const basketSlice = createSlice({
     name: 'basketSlice',
-    initialState: pState ?? initialState,
+    initialState: initialState,
     reducers: {
         increment: (state, action: PayloadAction<IModels>) => {
             const indexCurrentModelInBasket = state.itemsInBasket.findIndex(el => el.modelNumber === action.payload.modelNumber)
@@ -49,8 +47,6 @@ export const basketSlice = createSlice({
 
             // count the total number of items in basket
             state.amountItemsInBasket = counterItems(state.itemsInBasket)
-
-            sessionStorage.setItem('spBasket', JSON.stringify(state))
         },
         addOne: (state, action: PayloadAction<string>) => {
             // increase by 1 item in basket 
@@ -61,7 +57,6 @@ export const basketSlice = createSlice({
 
             // count the total number of items in basket
             state.amountItemsInBasket = counterItems(state.itemsInBasket)
-            sessionStorage.setItem('spBasket', JSON.stringify(state))
         },
         deleteOne: (state, action: PayloadAction<string>) => {
             const currentItem = findCurrentItem(state.itemsInBasket, action.payload)
@@ -79,7 +74,6 @@ export const basketSlice = createSlice({
 
             // count the total number of items in basket
             state.amountItemsInBasket = counterItems(state.itemsInBasket)
-            sessionStorage.setItem('spBasket', JSON.stringify(state))
         },
         deleteFullyCurrentItem: (state, action: PayloadAction<string>) => {
             const filteredBasket = state.itemsInBasket.filter(el => el.modelNumber != action.payload);
@@ -87,11 +81,9 @@ export const basketSlice = createSlice({
 
             // count the total number of items in basket
             state.amountItemsInBasket = counterItems(state.itemsInBasket)
-            sessionStorage.setItem('spBasket', JSON.stringify(state))
         },
         toggleBasketView: (state, action: PayloadAction<boolean>) => {
             state.isOpen = !action.payload
-            sessionStorage.setItem('spBasket', JSON.stringify(state))
         }
     }
 })
@@ -127,3 +119,5 @@ function counterItems (array: IItem[] | []): number {
     }
     
 // console.log(current(state))
+// sessionStorage.setItem('spBasket', JSON.stringify(state))
+// const pState: IInitStore = JSON.parse(sessionStorage.getItem('spBasket'))

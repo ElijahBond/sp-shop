@@ -1,15 +1,46 @@
-import { configureStore } from '@reduxjs/toolkit'
-import {basketSlice} from './basketSlice'
-import { itemsApi } from './itemsApi'
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { 
+        persistStore, 
+        persistReducer,
+        FLUSH,
+        REHYDRATE,
+        PAUSE,
+        PERSIST,
+        PURGE,
+        REGISTER,
+        } from 'redux-persist';
+import sessionStorage from 'redux-persist/es/storage/session';
 
-export const store = configureStore({
-    reducer: {
-        basketSlice: basketSlice.reducer,
-        [itemsApi.reducerPath]: itemsApi.reducer
-    },
+import {basketSlice} from './basketSlice';
+import { itemsApi } from './itemsApi';
+
+const rootReducer = combineReducers({
+    basketSlice: basketSlice.reducer,
+    [itemsApi.reducerPath]: itemsApi.reducer
+});
+
+const persistConfig = {
+    key: 'spShop',
+    storage: sessionStorage,
+    blacklist: [itemsApi.reducerPath]
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = configureStore({
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(itemsApi.middleware),
+        getDefaultMiddleware(
+            {
+                serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                },
+            }
+        ).concat(itemsApi.middleware),
 })
+
+export const persistor = persistStore(store);
+export default store;
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

@@ -12,7 +12,7 @@ const ShoppingCart = () => {
     return (
         <div className={shoppingCartStyles.main}>
             <div>
-                <img src={shoppingCart} />
+                <img src={shoppingCart} alt='shopping cart image' />
                 <div className={shoppingCartStyles.cart_counter}>
                     {amountItemsInBasket}
                 </div>
@@ -22,6 +22,7 @@ const ShoppingCart = () => {
                 onClick={() => dispatch(toggleBasketView(isOpen))}
                 className={shoppingCartStyles.burger_button}
                 src={burgerButton} 
+                alt='burger button image'
             />
         </div>
     )

@@ -16,7 +16,8 @@ const ItemInfo = (props: IModels) => {
                 <div className={itemInfoStyles.img}>
                     <img 
                         src={imgSrc}
-                        alt={modelNumber} />
+                        alt={modelNumber}
+                    />
                 </div>
             </Link>
 
@@ -27,7 +28,7 @@ const ItemInfo = (props: IModels) => {
                     onClick={() => dispatch(increment(props))}
                     className={itemInfoStyles.cart_button}
                 >
-                    <img src={shoppingCart} />
+                    <img src={shoppingCart} alt='shopping cart image' />
                 </div>
                 <span>$ {cost}</span>
             </div>

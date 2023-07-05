@@ -12,7 +12,9 @@ const ItemView = (props: IModels) => {
         <>
             <img 
                 className={itemPageStyles.itemImg}
-                src={imgSrc} />
+                src={imgSrc}
+                alt='item image'
+            />
 
             <p className={itemPageStyles.description}>{description}</p>
             <div className={itemPageStyles.model_number}>Item model number: {modelNumber}</div>
@@ -22,6 +24,7 @@ const ItemView = (props: IModels) => {
                     <img 
                         onClick={() => dispatch(increment(props))}
                         src={shoppingCart} 
+                        alt='shopping cart image'
                     />
                 </div>
                 <span>$ {cost}</span>

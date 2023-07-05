@@ -12,10 +12,12 @@ const BasketItem = ({ modelNumber ,description, imgSrc, totalCount, totalCost }:
                 onClick={() => dispatch(deleteFullyCurrentItem(modelNumber))}
                 className={basketItemStyles.clearImg} 
                 src={clearImg} 
+                alt='delete fully current item image'
             />
             <img 
                 className={basketItemStyles.itemImg}
                 src={imgSrc} 
+                alt='item image'
             />
             <p className={basketItemStyles.description}>{description}</p>
             <BasketCounter
