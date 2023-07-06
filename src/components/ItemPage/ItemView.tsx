@@ -1,5 +1,5 @@
 import itemInfoStyles from '../items/itemInfo.module.scss';
-import itemPageStyles from './ItemPage.module.scss';
+import itemPageStyles from './itemPage.module.scss';
 import { shoppingCart } from '../../assets';
 import { IModels } from '../types';
 import { increment, useAppDispatch } from '../../store';
