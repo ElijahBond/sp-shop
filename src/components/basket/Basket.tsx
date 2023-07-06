@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useAppSelector } from '../../store';
 import { BasketItem } from './BasketItem';
 import { BasketResult } from './BasketResult';
@@ -7,7 +8,7 @@ const Basket = () => {
     const allItemsInBasket = useAppSelector((state) => state.basketSlice.itemsInBasket)
     const isOpen = useAppSelector((state) => state.basketSlice.isOpen)
     
-    const allItemsInBasketView = allItemsInBasket.map(el => <BasketItem key={el.modelNumber} {...el} /> )
+    const allItemsInBasketView = useMemo(() => allItemsInBasket.map(el => <BasketItem key={el.modelNumber} {...el} /> ), [allItemsInBasket])
     const view = allItemsInBasketView.length === 0 ? <BasketIsEmpty /> : allItemsInBasketView
 
     return (
@@ -29,6 +30,6 @@ export { Basket };
 
 const BasketIsEmpty = () => {
     return (
-        <p style={{margin:' 0 0 2rem 5rem'}}>Basket is empty. Try add something</p>
+        <p style={{textAlign: 'center'}}>Basket is empty. Try add something</p>
     )
 }

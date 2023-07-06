@@ -11,7 +11,7 @@ const BasketResult = () => {
     const arrayItemsInBasket = useAppSelector((state) => state.basketSlice.itemsInBasket)
     const subtotalCount = arrayItemsInBasket.reduce((acc: number, el: IItem): number => acc + el.totalCost, 0)
 
-    const { isLoading, data } = useGetAllItemsQuery('')
+    const { isLoading, isError, isSuccess, data } = useGetAllItemsQuery('')
 
     useEffect(() => {
         if (data) {
@@ -19,9 +19,6 @@ const BasketResult = () => {
             setShippingCost(data.record.serviceInfo.shippingCost)
         }
     }, [data])
-
-    const taxView = isLoading ? "Wait" : `$ ${tax}`;
-    const shippingCostView = isLoading ? "Wait" : `$ ${shippingCost}`;
 
     return (
         <div className={basketResultStyles.main}>
@@ -32,12 +29,18 @@ const BasketResult = () => {
 
             <div className={basketResultStyles.string}>
                 <span>Tax</span>
-                <span>{taxView}</span>
+        
+                {isError && "We fix it"}
+                {isLoading && "Wait"}
+                {isSuccess && `$ ${tax}`}
             </div>
 
             <div className={basketResultStyles.string}>
                 <span>Shipping</span>
-                <span>{shippingCostView}</span>
+
+                {isError && "We fix it"}
+                {isLoading && "Wait"}
+                {isSuccess && `$ ${shippingCost}`}
             </div>
 
             <div className={`${basketResultStyles.string} ${basketResultStyles.bold}`}>

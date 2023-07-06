@@ -12,7 +12,7 @@ const ItemPage = () => {
     const { model } = useParams();
     const [ currentModel, setCurrentModel ] = useState({});
 
-    const { isLoading, data } = useGetAllItemsQuery('')
+    const { isLoading, isError, isSuccess, data } = useGetAllItemsQuery('')
 
     useEffect(() => {
         if (data) {
@@ -39,7 +39,9 @@ const ItemPage = () => {
                     </button>
                 </Link>
 
-                {isLoading ? <h1>Be patient please</h1> : view}
+                {isError && <h1 style={{margin: '0 auto'}}> Sorry( <br/>We fix it</h1>}
+                {isLoading && <h1>Be patient please</h1>}
+                {isSuccess && view}
             </div>
         </div>
     )

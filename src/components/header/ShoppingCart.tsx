@@ -10,7 +10,10 @@ const ShoppingCart = () => {
     const dispatch = useAppDispatch()
 
     return (
-        <div className={shoppingCartStyles.main}>
+        <div 
+            className={shoppingCartStyles.main} 
+            onClick={() => dispatch(toggleBasketView(isOpen))}
+        >
             <div>
                 <img src={shoppingCart} alt='shopping cart image' />
                 <div className={shoppingCartStyles.cart_counter}>
@@ -18,8 +21,7 @@ const ShoppingCart = () => {
                 </div>
             </div>
 
-            <img 
-                onClick={() => dispatch(toggleBasketView(isOpen))}
+            <img
                 className={shoppingCartStyles.burger_button}
                 src={burgerButton} 
                 alt='burger button image'

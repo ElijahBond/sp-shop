@@ -22,3 +22,9 @@
         border-bottom: 1px solid #CFCFCF;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .main {
+        width: 100%;
+    }
+}
