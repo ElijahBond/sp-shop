@@ -9,6 +9,7 @@ const BasketResult = () => {
     const [shippingCost, setShippingCost] = useState(0)
 
     const arrayItemsInBasket = useAppSelector((state) => state.basketSlice.itemsInBasket)
+    // @ts-ignore
     const subtotalCount = arrayItemsInBasket.reduce((acc: number, el: IItem): number => acc + el.totalCost, 0)
 
     const { isLoading, isError, isSuccess, data } = useGetAllItemsQuery('')

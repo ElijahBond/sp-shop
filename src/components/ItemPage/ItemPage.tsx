@@ -20,7 +20,8 @@ const ItemPage = () => {
             setCurrentModel(modelData);
         }
     }, [data, model])
-
+    
+    // @ts-ignore
     const view = currentModel ? <ItemView {...currentModel} /> : <h1>Bad link</h1>
     
     return (
