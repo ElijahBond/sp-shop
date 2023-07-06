@@ -6,7 +6,7 @@ import { useGetAllItemsQuery } from '../../store/itemsApi';
 
 import { IModels } from '../types';
 
-import itemPageStyles from './ItemPage.module.scss';
+import itemPageStyles from './itemPage.module.scss';
 
 const ItemPage = () => {
     const { model } = useParams();
@@ -20,7 +20,6 @@ const ItemPage = () => {
             setCurrentModel(modelData);
         }
     }, [data, model])
-    
     // @ts-ignore
     const view = currentModel ? <ItemView {...currentModel} /> : <h1>Bad link</h1>
     
