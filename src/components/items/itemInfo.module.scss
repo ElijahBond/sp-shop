@@ -44,6 +44,10 @@
 
     margin-right: 1rem;
 
+    &:active {
+        background-color: rgb(5, 185, 245);
+    }
+
     img {       
         margin: 0.5rem 0.4rem;
         filter: invert(100%);
